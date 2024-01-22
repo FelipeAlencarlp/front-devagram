@@ -23,7 +23,7 @@ export default function Cadastro() {
     const [senha, setSenha] = useState("");
     const [confirmacaoSenha, setConfirmacaoSenha] = useState("");
     const [estaSubmetendo, setEstaSubmetendo] = useState(false);
-    const router = useRouter();
+    const router = useRouter(); // capaz de manipular páginas, para redirecionamentos
 
     const validarFormulario = () => {
         return (
@@ -35,6 +35,7 @@ export default function Cadastro() {
     }
 
     const aoSubmeter = async (e) => {
+        // evitar atualização de página com .preventDefault()
         e.preventDefault();
         if (!validarFormulario()) {
             return;
@@ -43,7 +44,9 @@ export default function Cadastro() {
         setEstaSubmetendo(true);
 
         try {
+            // preparando o payload - FomData(), pois posso enviar arquivo junto
             const corpoReqCadastro = new FormData();
+            // campos que o formulário espera
             corpoReqCadastro.append("nome", nome);
             corpoReqCadastro.append("email", email);
             corpoReqCadastro.append("senha", senha);
@@ -53,6 +56,7 @@ export default function Cadastro() {
             }
 
             await usuarioService.cadastro(corpoReqCadastro);
+            // setar o usuário no local storage e redirecionar para home
             await usuarioService.login({
                 login: email,
                 senha

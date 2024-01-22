@@ -10,9 +10,11 @@ import FeedService from "../../services/FeedService";
 
 const limiteDaDescricao = 255;
 const descricaoMinima = 3;
+// setar o feedService para conseguir chamar o método dentro do service
 const feedService = new FeedService();
 
 function Publicacao() {
+    // criar states para guardar os valores
     const [imagem, setImagem] = useState();
     const [descricao, setDescricao] = useState('');
     const [inputImagem, setInputImagem] = useState();
@@ -43,7 +45,7 @@ function Publicacao() {
 
     const aoClicarAcaoEsquerdaCabecalho = () => {
         if (estaNaEtapaUm()) {
-            inputImagem.value = null;
+            inputImagem.value = null; // reseta o estado do input
             setImagem(null);
             return;
         }
@@ -77,24 +79,28 @@ function Publicacao() {
         return 'segundaEtapa';
     }
 
+    // chamada API para fazer publicação
     const publicar = async () => {
         try {
+            // chamar o método de validação se não tiver OK não deixar passar
             if (!validarFormulario()) {
-                alert('A descrição precisa de pelo menos 3 caracteres e a imagem precisa estar selecionada.');
+                alert('A descrição precisa ter pelo menos 3 caracteres e a imagem precisa estar selecionada.');
                 return;
             }
-
+            // se o formulário estiver OK
             const corpoPublicacao = new FormData();
             corpoPublicacao.append('descricao', descricao);
             corpoPublicacao.append('file', imagem.arquivo);
 
             await feedService.fazerPublicacao(corpoPublicacao);
+            // redireciona para home quando publicar
             router.push('/');
         } catch (error) {
             alert('Erro ao salvar publicação!');
         }
     }
 
+    // método para validar o formulário antes de publicar
     const validarFormulario = () => {
         return (
             descricao.length >= descricaoMinima

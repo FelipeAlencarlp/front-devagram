@@ -1,3 +1,4 @@
+// HOC para encapsular tanto navbar quando o rodapé para todo o sistema
 import { useRouter } from "next/router";
 import Cabecalho from "../componentes/layout/Cabecalho";
 import Rodape from "../componentes/layout/Rodape";

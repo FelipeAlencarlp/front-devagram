@@ -11,12 +11,15 @@ export function FazerComentario({ usuarioLogado, comentar }) {
         setLinhas(valorInput.length > 0 ? 2 : 1);
     }
 
+    // método para capturar o evento
     const aoPressionarQualquerTecla = (e) => {
         if (e.key === 'Enter') {
+            // chama a função para fazer comentario se tiver caracteres
             fazerComentario();
         }
     }
 
+    // checar se tem comentario
     const fazerComentario = () => {
         if (comentario.trim().length === 0 || !comentar) {
             return;

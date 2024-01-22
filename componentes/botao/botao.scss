@@ -1,3 +1,5 @@
+// definir bloco de código e reutiliza-lo
+// é um médoto dentro do sass @mixin
 @mixin botaoPrimario {
     background-color: $corPrimaria;
     color: $branco;
@@ -16,6 +18,7 @@
     cursor: pointer;
 
     &.primaria {
+        // incluir o @mixin
         @include botaoPrimario;
 
         &:hover {

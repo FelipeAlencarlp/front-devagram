@@ -12,6 +12,7 @@ export default function InputPublico({
     return (
         <div className="inputPublicoContainer">
             <div className="inputPublico">
+                {/* Image do próprio Next, com otimizações para a imagem */}
                 <Image
                     src={imagem}
                     alt="imagem do campo"

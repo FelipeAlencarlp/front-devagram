@@ -1,8 +1,8 @@
 # Devagram
 
-Projeto desenvolvimento para apresentação do react.js e next na formação Devaria 2022.
+Projeto desenvolvido para apresentação do react.js e next na formação Devaria 2022.
 
-### Tenologias Utilizadas
+### Tecnologias Utilizadas
 
 - React.js 17.0.2
 - Nextjs 12.1.0

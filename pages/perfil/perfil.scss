@@ -11,7 +11,8 @@
                 height: 85px;
                 width: 85px;
                 margin-right: 24px;
-
+                
+                // abaixo bloco para aplicar borda no avatar com efeito gradiente
                 border: solid 3px transparent;
                 background-image: linear-gradient(to bottom, white, white), radial-gradient(circle at top center, $corPrimaria,$corPrimaria3);
                 background-origin: border-box;
@@ -136,10 +137,6 @@
                 span {
                     font-size: 14px;
                 }
-            }
-
-            .edicaoNome {
-                
             }
         }
     }

@@ -56,7 +56,7 @@ export default function Login({ aposAutenticacao }) {
                 <Image
                     src={imagemLogo}
                     alt="logotipo"
-                    layout="fill"
+                    layout="fill" // 'fill' é para definir o tamanho da imagem pela div superior
                     className="logo"
                 />
             </div>
@@ -68,7 +68,7 @@ export default function Login({ aposAutenticacao }) {
                         texto="E-mail"
                         tipo="email"
                         aoAlterarValor={e => setEmail(e.target.value)}
-                        valor={email}
+                        valor={email} // exibe o que foi digitado
                         mensagemValidacao="O endereço informado é inválido"
                         exibirMensagemValidacao={email && !validarEmail(email)}
                     />
@@ -78,7 +78,7 @@ export default function Login({ aposAutenticacao }) {
                         texto="Senha"
                         tipo="password"
                         aoAlterarValor={e => setSenha(e.target.value)}
-                        valor={senha}
+                        valor={senha} // exibe o que foi digitado
                         mensagemValidacao="Precisa ter pelo menos 3 caracteres"
                         exibirMensagemValidacao={senha && !validarSenha(senha)}
                     />
@@ -93,6 +93,7 @@ export default function Login({ aposAutenticacao }) {
                 <div className="rodapePaginaPublica">
                     <p>Não possui uma conta?</p>
                     <Link href="/cadastro">Faça seu cadastro agora!</Link>
+                    {/* Link faz o redirecionamento entre uma página e outra */}
                 </div>
             </div>
         </section>

@@ -55,6 +55,7 @@ export default function CabecalhoPerfil({
         try {
             await usuarioService.alternarSeguir(usuario._id);
             setQuantidadeSeguidores(
+                // se está seguindo e deixar de segui tira 1, senão está seguindo e segue aumenta 1
                 estaSeguindoOUsuario
                     ? (quantidadeSeguidores - 1)
                     : (quantidadeSeguidores + 1)

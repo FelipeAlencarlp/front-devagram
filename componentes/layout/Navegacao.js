@@ -27,6 +27,7 @@ const mapaDeRotas = {
 }
 
 export default function Navegacao({ className }) {
+    // controlar o estado de cada navegação mudando a cor dos botões
     const [rotaAtiva, setRotaAtiva] = useState('home');
     const router = useRouter();
 
@@ -49,6 +50,7 @@ export default function Navegacao({ className }) {
         }
     }
 
+    // definir imagem para cada rota
     const obterImagem = (nomeRota) => {
         const rotaAtivada = mapaDeRotas[nomeRota];
 

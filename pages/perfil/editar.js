@@ -28,6 +28,7 @@ function EditarPerfil({ usuarioLogado }) {
         });
     }, []);
 
+    // requisição API para editar perfil
     const atualizarPerfil = async () => {
         try {
             if (!validarNome(nome)) {
@@ -42,9 +43,11 @@ function EditarPerfil({ usuarioLogado }) {
                 corpoRequisicao.append('file', avatar.arquivo);
             }
 
+            // atualizar no local storage o novo nome
             await usuarioService.atualizarPerfil(corpoRequisicao);
             localStorage.setItem('nome', nome);
 
+            // atualizar no local storage o novo avatar se tiver
             if (avatar.arquivo) {
                 localStorage.setItem('avatar', avatar.preview);
             }

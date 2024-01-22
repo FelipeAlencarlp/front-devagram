@@ -29,6 +29,7 @@ function Perfil({ usuarioLogado }) {
     }
 
     useEffect(async () => {
+        // verifica se o ID do usuário foi setado
         if (!router.query.id) {
             return;
         }

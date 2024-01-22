@@ -21,6 +21,19 @@ export default function UploadImagem({
         referenciaInput?.current?.click();
     }
 
+    const obterUrlDaImagemEAtualizarEstado = (arquivo) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(arquivo);
+        
+        // garante o carregamento da imagem
+        fileReader.onloadend = () => {
+            setImagem({
+                preview: fileReader.result,
+                arquivo
+            });
+        }
+    }
+
     const aoAleterarImagem = () => {
         if (!referenciaInput?.current?.files?.length) {
             return;
@@ -30,21 +43,12 @@ export default function UploadImagem({
         obterUrlDaImagemEAtualizarEstado(arquivo);
     }
 
-    const obterUrlDaImagemEAtualizarEstado = (arquivo) => {
-        const fileReader = new FileReader();
-        fileReader.readAsDataURL(arquivo);
-        fileReader.onloadend = () => {
-            setImagem({
-                preview: fileReader.result,
-                arquivo
-            });
-        }
-    }
-
     const aoSoltarAImagem = (e) => {
         e.preventDefault();
+        // verifica se a propriedade está setada e se tem algum arquivo selecionado
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            const arquivo = e.dataTransfer.files[0];
+            // pega o primeiro arquivo(caso o usuário selecione varias)
+            const arquivo = e.dataTransfer.files[0]; 
             obterUrlDaImagemEAtualizarEstado(arquivo);
         }
     }
@@ -52,8 +56,8 @@ export default function UploadImagem({
     return (
         <div className={`uploadImagemContainer ${className}`}
             onClick={abrirSeletorArquivos}
-            onDragOver={e => e.preventDefault()}
-            onDrop={aoSoltarAImagem}
+            onDragOver={e => e.preventDefault()} // evita o comportamento padrão de abrir imagem em outra aba
+            onDrop={aoSoltarAImagem} // quando solta a imagem ele captura
         >
             {imagemPreview && (
                 <div className="imagemPreviewContainer">

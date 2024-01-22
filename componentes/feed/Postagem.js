@@ -30,6 +30,7 @@ export default function Postagem({
     );
 
     const exibirDescricaoCompleta = () => {
+        // pegar o maior número inteiro possível
         setTamanhoAtualDaDescricao(Number.MAX_SAFE_INTEGER);
     }
 
@@ -57,7 +58,9 @@ export default function Postagem({
             await feedService.adicionarComentario(id, comentario);
             setDeveExibirSecaoParaComentar(false);
             setComentariosPostagem([
+                // pega todos os elementos que estão na listagem
                 ...comentariosPostagem,
+                // carregar para não chamar a API toda hora
                 {
                     nome: usuarioLogado.nome,
                     mensagem: comentario

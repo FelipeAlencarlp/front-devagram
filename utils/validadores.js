@@ -1,3 +1,5 @@
+// alguns validadores úteis para serem utilizados no projeto
+
 const validarNome = (nome) => {
     return nome?.toString().length > 2;
 }
